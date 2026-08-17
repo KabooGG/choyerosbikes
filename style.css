@@ -270,35 +270,69 @@
             font-size: 14px;
         }
 
-        @media (max-width: 700px) {
-            header {
-                padding: 18px 5%;
-            }
+       @media (max-width: 700px) {
 
-           nav {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-    width: 100%;
-    margin-top: 1px;
+    header {
+        padding: 10px 5%;
+        position: relative;
+    }
+
+    .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 26px;
+        cursor: pointer;
+        color: inherit;
+        padding: 4px;
+    }
+
+    nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        margin-top: 0;
+        padding: 8px 0;
+        background: inherit;
+        z-index: 1000;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    nav a {
+        text-align: center;
+        padding: 10px;
+    }
+
+    .hero {
+        padding: 60px 5%;
+    }
+
+    section {
+        padding: 60px 5%;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 16px;
+    }
+
+    .gallery-item {
+        grid-column: auto !important;
+        grid-row: auto !important;
+    }
 }
-
-nav a {
-    text-align: center;
-    padding: 8px;
-}
-            .hero {
-                padding: 60px 5%;
-            }
-
-            section {
-                padding: 60px 5%;
-            }
-
-            .hero h1 {
-                font-size: 48px;
-            }
-        }
        
         .whatsapp-float {
     position: fixed;

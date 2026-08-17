@@ -1,5 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const nav = document.querySelector("nav");
 
+    menuToggle.addEventListener("click", () => {
+        nav.classList.toggle("active");
+
+        if (nav.classList.contains("active")) {
+            menuToggle.textContent = "✕";
+            menuToggle.setAttribute("aria-label", "Cerrar menú");
+        } else {
+            menuToggle.textContent = "☰";
+            menuToggle.setAttribute("aria-label", "Abrir menú");
+        }
+    });
+
+    nav.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+            nav.classList.remove("active");
+            menuToggle.textContent = "☰";
+            menuToggle.setAttribute("aria-label", "Abrir menú");
+        });
+    });
     /* SCROLL SUAVE */
 
     document.querySelectorAll("nav a").forEach(link => {
@@ -13,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const start = window.scrollY;
             const end = target.getBoundingClientRect().top + window.scrollY - 80;
             const distance = end - start;
-            const duration = 800;
+            const duration = 450;
             let startTime = null;
 
             function animation(currentTime) {
