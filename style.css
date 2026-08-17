@@ -184,6 +184,16 @@
     .gallery-item {
         height: 260px;
     }
+    .gallery {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 16px;
+}
+
+.gallery-item {
+    grid-column: auto !important;
+    grid-row: auto !important;
+}
 }
         .card h3 {
             margin-bottom: 10px;
