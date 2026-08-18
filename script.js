@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+
     const menuToggle = document.querySelector(".menu-toggle");
     const nav = document.querySelector("nav");
+    const logo = document.querySelector(".logo");
 
     menuToggle.addEventListener("click", () => {
         nav.classList.toggle("active");
@@ -14,6 +16,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    logo.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+
     nav.querySelectorAll("a").forEach(link => {
         link.addEventListener("click", () => {
             nav.classList.remove("active");
@@ -21,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
             menuToggle.setAttribute("aria-label", "Abrir menú");
         });
     });
+
     /* SCROLL SUAVE */
 
     document.querySelectorAll("nav a").forEach(link => {
