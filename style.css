@@ -516,3 +516,8 @@ html {
     vertical-align: middle;
     margin-right: 7px;
 }
+
+.logo {
+    text-decoration: none;
+    color: inherit;
+}
