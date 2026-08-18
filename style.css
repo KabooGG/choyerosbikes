@@ -520,4 +520,12 @@ html {
 .logo {
     text-decoration: none;
     color: inherit;
+    cursor: pointer;
+}
+
+.logo:visited,
+.logo:hover,
+.logo:active {
+    color: inherit;
+    text-decoration: none;
 }
