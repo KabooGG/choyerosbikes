@@ -2,7 +2,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const menuToggle = document.querySelector(".menu-toggle");
     const nav = document.querySelector("nav");
+    const navClose = document.getElementById("navClose");
     const logo = document.querySelector(".logo");
+
+    function closeMenu() {
+        nav.classList.remove("active");
+        menuToggle.textContent = "☰";
+        menuToggle.setAttribute("aria-label", "Abrir menú");
+    }
 
     menuToggle.addEventListener("click", () => {
         nav.classList.toggle("active");
@@ -11,10 +18,13 @@ document.addEventListener("DOMContentLoaded", () => {
             menuToggle.textContent = "✕";
             menuToggle.setAttribute("aria-label", "Cerrar menú");
         } else {
-            menuToggle.textContent = "☰";
-            menuToggle.setAttribute("aria-label", "Abrir menú");
+            closeMenu();
         }
     });
+
+    if (navClose) {
+        navClose.addEventListener("click", closeMenu);
+    }
 
     logo.addEventListener("click", (e) => {
         e.preventDefault();
@@ -26,11 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     nav.querySelectorAll("a").forEach(link => {
-        link.addEventListener("click", () => {
-            nav.classList.remove("active");
-            menuToggle.textContent = "☰";
-            menuToggle.setAttribute("aria-label", "Abrir menú");
-        });
+        link.addEventListener("click", closeMenu);
     });
 
     /* SOMBRA DEL HEADER Y BOTÓN DE VOLVER ARRIBA AL HACER SCROLL */
