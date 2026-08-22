@@ -305,6 +305,23 @@
         .card:hover p {
             color: white;
         }
+
+        @media (hover: none) {
+            .card::before {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            .card-icon {
+                color: white;
+                border-color: rgba(255,255,255,0.7);
+            }
+
+            .card h3,
+            .card p {
+                color: white;
+            }
+        }
 .gallery {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
