@@ -373,4 +373,44 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+
+    /* HORARIO EN VIVO */
+
+    const scheduleItems = document.querySelectorAll(".schedule-list li");
+    const openStatusEl = document.getElementById("openStatus");
+    const openStatusText = document.getElementById("openStatusText");
+
+    if (scheduleItems.length && openStatusEl && openStatusText) {
+
+        const now = new Date();
+        const day = now.getDay(); // 0 = domingo ... 6 = sabado
+        const hour = now.getHours() + now.getMinutes() / 60;
+
+        scheduleItems.forEach(li => {
+            if (parseInt(li.getAttribute("data-day")) === day) {
+                li.classList.add("today");
+            }
+        });
+
+        const isOpenDay = day >= 1 && day <= 6;
+        const isOpenNow = isOpenDay && hour >= 10 && hour < 18;
+
+        if (isOpenNow) {
+            openStatusEl.classList.add("open");
+            openStatusText.textContent = "Abierto ahora";
+        } else {
+            openStatusEl.classList.add("closed");
+
+            if (isOpenDay && hour < 10) {
+                openStatusText.textContent = "Cerrado — abre hoy a las 10:00 am";
+            } else if (day === 6) {
+                openStatusText.textContent = "Cerrado — abre el lunes a las 10:00 am";
+            } else if (day === 0) {
+                openStatusText.textContent = "Cerrado — abre mañana a las 10:00 am";
+            } else {
+                openStatusText.textContent = "Cerrado — abre mañana a las 10:00 am";
+            }
+        }
+    }
+
 });
